@@ -1,6 +1,3 @@
-package main
-
-// junretu.go
 func NextPermutation[E any](x []E, cmp func(a, b E) int) bool {
 	if len(x) <= 1 {
 		return false

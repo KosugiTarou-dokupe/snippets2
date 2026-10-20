@@ -1,6 +1,3 @@
-package main
-
-//mulmod
 func mulmod(a, b, mod uint64) uint64 {
 	a %= mod
 	var ret uint64 = 0

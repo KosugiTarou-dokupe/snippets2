@@ -1,7 +1,3 @@
-package main
-
-//weightUF
-
 type uf struct {
 	n    int
 	root []int

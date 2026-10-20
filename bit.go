@@ -1,6 +1,3 @@
-package main
-
-//bit
 func newBIT(n int) []int {
 	return make([]int, n+1)
 }

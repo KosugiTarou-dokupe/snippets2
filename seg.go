@@ -1,7 +1,3 @@
-package main
-
-//seg
-
 type Node struct {
 	x int
 }

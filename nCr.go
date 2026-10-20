@@ -1,7 +1,3 @@
-package main
-
-//nCr
-
 func newFacts(n int, mod int64, facts []int64) []int64 {
 	if len(facts) >= n+1 {
 		return facts

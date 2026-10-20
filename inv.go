@@ -1,6 +1,3 @@
-package main
-
-//inv
 func modinv(n, q int64) int64 {
 	n %= q
 	n = (n + q) % q

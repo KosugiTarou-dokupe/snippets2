@@ -1,6 +1,3 @@
-package main
-
-//lazy
 type node struct {
 	x int64
 }

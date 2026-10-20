@@ -1,7 +1,3 @@
-package main
-
-//trie
-
 const sigma int = 26
 const base byte = 'a'
 

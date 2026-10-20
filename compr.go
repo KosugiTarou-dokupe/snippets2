@@ -1,8 +1,5 @@
-package main
-
 import "slices"
 
-//compr
 func compress(n int, a []int64) ([]int, []int64) {
 	var b []int64 = make([]int64, n)
 	copy(b, a)
