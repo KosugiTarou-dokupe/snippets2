@@ -27,6 +27,5 @@ func NextPermutation[E any](x []E, cmp func(a, b E) int) bool {
 	for l, r := j, n-1; l < r; l, r = l+1, r-1 {
 		x[l], x[r] = x[r], x[l]
 	}
-	x = append(x[:j], rev(x[j:])...)
 	return true
 }

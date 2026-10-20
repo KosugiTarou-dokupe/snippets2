@@ -2,22 +2,22 @@ package main
 
 //seg
 
-type node struct {
+type Node struct {
 	x int
 }
 type segment struct {
 	n, m int
-	data []node
-	e    node
-	op   func(a, b node) node
+	data []Node
+	e    Node
+	op   func(a, b Node) Node
 }
 
-func newsegtree(arr []node, e node, op func(a, b node) node) *segment {
+func newsegtree(arr []Node, e Node, op func(a, b Node) Node) *segment {
 	var n int = 1
 	for n < len(arr) {
 		n *= 2
 	}
-	data := make([]node, 2*n)
+	data := make([]Node, 2*n)
 	for i := 0; i < 2*n; i++ {
 		data[i] = e
 	}
@@ -29,7 +29,7 @@ func newsegtree(arr []node, e node, op func(a, b node) node) *segment {
 	}
 	return &segment{n, len(arr), data, e, op}
 }
-func (seg *segment) update(pos int, val node) {
+func (seg *segment) update(pos int, val Node) {
 	pos += seg.n
 	seg.data[pos] = val
 	for pos > 1 {
@@ -37,9 +37,9 @@ func (seg *segment) update(pos int, val node) {
 		seg.data[pos] = seg.op(seg.data[pos*2], seg.data[pos*2+1])
 	}
 }
-func (seg *segment) query(l, r int) node {
+func (seg *segment) query(l, r int) Node {
 	l, r = l+seg.n, r+seg.n
-	var resl, resr node = seg.e, seg.e
+	var resl, resr Node = seg.e, seg.e
 	for l < r {
 		if l&1 == 1 {
 			resl = seg.op(resl, seg.data[l])
@@ -53,12 +53,12 @@ func (seg *segment) query(l, r int) node {
 	}
 	return seg.op(resl, resr)
 }
-func (seg *segment) maxRight(l int, f func(node) bool) int {
+func (seg *segment) maxRight(l int, f func(Node) bool) int {
 	if l == seg.m {
 		return l
 	}
 	l += seg.n
-	var sm node = seg.e
+	var sm Node = seg.e
 	for {
 		for l&1 == 0 {
 			l /= 2
@@ -80,12 +80,12 @@ func (seg *segment) maxRight(l int, f func(node) bool) int {
 		}
 	}
 }
-func (seg *segment) minLeft(r int, f func(node) bool) int {
+func (seg *segment) minLeft(r int, f func(Node) bool) int {
 	if r == 0 {
 		return r
 	}
 	r += seg.n
-	var sm node = seg.e
+	var sm Node = seg.e
 	for {
 		r--
 		for r > 1 && r&1 == 1 {
