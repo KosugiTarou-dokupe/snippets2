@@ -24,12 +24,8 @@ func NextPermutation[E any](x []E, cmp func(a, b E) int) bool {
 		}
 	}
 	x[j-1], x[l] = x[l], x[j-1]
-	var rev = func(x []E) []E {
-		var ret []E = make([]E, len(x))
-		for i := 0; i < len(x); i++ {
-			ret[len(x)-i-1] = x[i]
-		}
-		return ret
+	for l, r := j, n-1; l < r; l, r = l+1, r-1 {
+		x[l], x[r] = x[r], x[l]
 	}
 	x = append(x[:j], rev(x[j:])...)
 	return true
